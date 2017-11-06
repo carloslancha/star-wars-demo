@@ -190,12 +190,44 @@ public class StarWarsCharacterServiceHttp {
 	}
 
 	public static java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> getStarWarsCharacters(
-		HttpPrincipal httpPrincipal, long groupId, int start, int end)
+		HttpPrincipal httpPrincipal, long groupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		try {
 			MethodKey methodKey = new MethodKey(StarWarsCharacterServiceUtil.class,
 					"getStarWarsCharacters",
 					_getStarWarsCharactersParameterTypes4);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey, groupId);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				if (e instanceof com.liferay.portal.kernel.exception.PortalException) {
+					throw (com.liferay.portal.kernel.exception.PortalException)e;
+				}
+
+				throw new com.liferay.portal.kernel.exception.SystemException(e);
+			}
+
+			return (java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter>)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
+	public static java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> getStarWarsCharacters(
+		HttpPrincipal httpPrincipal, long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		try {
+			MethodKey methodKey = new MethodKey(StarWarsCharacterServiceUtil.class,
+					"getStarWarsCharacters",
+					_getStarWarsCharactersParameterTypes5);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey, groupId,
 					start, end);
@@ -229,7 +261,7 @@ public class StarWarsCharacterServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(StarWarsCharacterServiceUtil.class,
 					"getStarWarsCharacters",
-					_getStarWarsCharactersParameterTypes5);
+					_getStarWarsCharactersParameterTypes6);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey, groupId,
 					start, end, orderByComparator);
@@ -264,7 +296,7 @@ public class StarWarsCharacterServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(StarWarsCharacterServiceUtil.class,
 					"getStarWarsCharacters",
-					_getStarWarsCharactersParameterTypes6);
+					_getStarWarsCharactersParameterTypes7);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey, groupId,
 					name, start, end, orderByComparator);
@@ -296,7 +328,7 @@ public class StarWarsCharacterServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(StarWarsCharacterServiceUtil.class,
 					"getStarWarsCharactersCount",
-					_getStarWarsCharactersCountParameterTypes7);
+					_getStarWarsCharactersCountParameterTypes8);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey, groupId);
 
@@ -323,7 +355,7 @@ public class StarWarsCharacterServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(StarWarsCharacterServiceUtil.class,
 					"getStarWarsCharactersCount",
-					_getStarWarsCharactersCountParameterTypes8);
+					_getStarWarsCharactersCountParameterTypes9);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey, groupId,
 					name);
@@ -353,7 +385,7 @@ public class StarWarsCharacterServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(StarWarsCharacterServiceUtil.class,
 					"updateStarWarsCharacter",
-					_updateStarWarsCharacterParameterTypes9);
+					_updateStarWarsCharacterParameterTypes10);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey,
 					starWarsCharacterId, name, description);
@@ -396,23 +428,26 @@ public class StarWarsCharacterServiceHttp {
 			long.class
 		};
 	private static final Class<?>[] _getStarWarsCharactersParameterTypes4 = new Class[] {
-			long.class, int.class, int.class
+			long.class
 		};
 	private static final Class<?>[] _getStarWarsCharactersParameterTypes5 = new Class[] {
+			long.class, int.class, int.class
+		};
+	private static final Class<?>[] _getStarWarsCharactersParameterTypes6 = new Class[] {
 			long.class, int.class, int.class,
 			com.liferay.portal.kernel.util.OrderByComparator.class
 		};
-	private static final Class<?>[] _getStarWarsCharactersParameterTypes6 = new Class[] {
+	private static final Class<?>[] _getStarWarsCharactersParameterTypes7 = new Class[] {
 			long.class, java.lang.String.class, int.class, int.class,
 			com.liferay.portal.kernel.util.OrderByComparator.class
 		};
-	private static final Class<?>[] _getStarWarsCharactersCountParameterTypes7 = new Class[] {
+	private static final Class<?>[] _getStarWarsCharactersCountParameterTypes8 = new Class[] {
 			long.class
 		};
-	private static final Class<?>[] _getStarWarsCharactersCountParameterTypes8 = new Class[] {
+	private static final Class<?>[] _getStarWarsCharactersCountParameterTypes9 = new Class[] {
 			long.class, java.lang.String.class
 		};
-	private static final Class<?>[] _updateStarWarsCharacterParameterTypes9 = new Class[] {
+	private static final Class<?>[] _updateStarWarsCharacterParameterTypes10 = new Class[] {
 			long.class, java.lang.String.class, java.lang.String.class
 		};
 }

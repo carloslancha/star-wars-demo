@@ -76,6 +76,13 @@ public class StarWarsCharacterServiceWrapper implements StarWarsCharacterService
 
 	@Override
 	public java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> getStarWarsCharacters(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _starWarsCharacterService.getStarWarsCharacters(groupId);
+	}
+
+	@Override
+	public java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> getStarWarsCharacters(
 		long groupId, int start, int end)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _starWarsCharacterService.getStarWarsCharacters(groupId, start,

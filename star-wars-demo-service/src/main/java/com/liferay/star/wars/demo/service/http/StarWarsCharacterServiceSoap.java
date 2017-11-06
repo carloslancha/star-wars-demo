@@ -127,6 +127,21 @@ public class StarWarsCharacterServiceSoap {
 	}
 
 	public static com.liferay.star.wars.demo.model.StarWarsCharacterSoap[] getStarWarsCharacters(
+		long groupId) throws RemoteException {
+		try {
+			java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> returnValue =
+				StarWarsCharacterServiceUtil.getStarWarsCharacters(groupId);
+
+			return com.liferay.star.wars.demo.model.StarWarsCharacterSoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.star.wars.demo.model.StarWarsCharacterSoap[] getStarWarsCharacters(
 		long groupId, int start, int end) throws RemoteException {
 		try {
 			java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> returnValue =

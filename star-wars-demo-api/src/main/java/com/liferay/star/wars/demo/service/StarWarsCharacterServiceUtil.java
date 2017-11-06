@@ -79,6 +79,12 @@ public class StarWarsCharacterServiceUtil {
 	}
 
 	public static java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> getStarWarsCharacters(
+		long groupId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().getStarWarsCharacters(groupId);
+	}
+
+	public static java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> getStarWarsCharacters(
 		long groupId, int start, int end)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getStarWarsCharacters(groupId, start, end);

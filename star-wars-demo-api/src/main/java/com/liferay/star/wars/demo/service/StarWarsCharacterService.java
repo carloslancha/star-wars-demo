@@ -79,6 +79,10 @@ public interface StarWarsCharacterService extends BaseService {
 	public java.lang.String getOSGiServiceIdentifier();
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<StarWarsCharacter> getStarWarsCharacters(long groupId)
+		throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<StarWarsCharacter> getStarWarsCharacters(long groupId,
 		int start, int end) throws PortalException;
 
