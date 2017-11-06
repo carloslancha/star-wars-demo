@@ -1,0 +1,7 @@
+Bundle-Name: Liferay Star Wars Demo Service
+Bundle-SymbolicName: com.liferay.star.wars.demo.service
+Bundle-Version: 1.0.0
+Liferay-Releng-Module-Group-Description:
+Liferay-Releng-Module-Group-Title: Star Wars Demo
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true

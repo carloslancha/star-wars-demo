@@ -1,0 +1,10 @@
+Bundle-Name: Liferay Star Wars Demo API
+Bundle-SymbolicName: com.liferay.star.wars.demo.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.star.wars.demo.exception,\
+	com.liferay.star.wars.demo.model,\
+	com.liferay.star.wars.demo.service,\
+	com.liferay.star.wars.demo.service.persistence
+Liferay-Releng-Module-Group-Description:
+Liferay-Releng-Module-Group-Title: Star Wars Demo
