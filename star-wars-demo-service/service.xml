@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+
+<service-builder auto-import-default-references="false" auto-namespace-tables="false" package-path="com.liferay.star.wars.demo">
+	<namespace>StarWars</namespace>
+	<entity local-service="true" name="StarWarsCharacter" remote-service="true">
+
+		<!-- PK fields -->
+
+		<column name="starWarsCharacterId" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column name="name" type="String" />
+		<column name="picture" type="String" />
+		<column name="fraction" type="String" />
+		<column name="description" type="String" />
+
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="name" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+		<finder name="G_N" return-type="StarWarsCharacter" unique="true">
+			<finder-column name="groupId" />
+			<finder-column name="name" />
+		</finder>
+		<finder name="G_LikeN" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column case-sensitive="false" comparator="LIKE" name="name" />
+		</finder>
+
+		<!-- References -->
+
+		<reference entity="Resource" package-path="com.liferay.portal" />
+		<reference entity="User" package-path="com.liferay.portal" />
+	</entity>
+	<exceptions>
+		<exception>DuplicateStarWarsCharacter</exception>
+		<exception>StarWarsCharacterName</exception>
+	</exceptions>
+</service-builder>
