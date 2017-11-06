@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="com.liferay.star.wars.demo.service.impl.StarWarsCharacterLocalServiceImpl" id="com.liferay.star.wars.demo.service.StarWarsCharacterLocalService" />
+	<bean class="com.liferay.star.wars.demo.service.impl.StarWarsCharacterServiceImpl" id="com.liferay.star.wars.demo.service.StarWarsCharacterService" />
+	<bean class="com.liferay.star.wars.demo.service.persistence.impl.StarWarsCharacterPersistenceImpl" id="com.liferay.star.wars.demo.service.persistence.StarWarsCharacterPersistence" parent="basePersistence" />
+</beans>

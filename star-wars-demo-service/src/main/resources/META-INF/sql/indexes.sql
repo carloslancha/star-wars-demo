@@ -1,0 +1,1 @@
+create unique index IX_BF7EAA57 on StarWarsCharacter (groupId, name[$COLUMN_LENGTH:75$]);
