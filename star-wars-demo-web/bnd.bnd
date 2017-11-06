@@ -1,0 +1,11 @@
+Bundle-Name: Liferay Star Wars Demo Web
+Bundle-SymbolicName: com.liferay.star.wars.demo.web
+Bundle-Version: 1.0.0
+Provide-Capability:\
+	soy;\
+		type="star-wars-demo";\
+		version:Version="1.0.0"
+Require-Capability:\
+	soy;\
+		filter:="(type=metal)"
+Web-ContextPath: /star-wars-demo-web
