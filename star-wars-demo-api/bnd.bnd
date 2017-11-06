@@ -2,6 +2,7 @@ Bundle-Name: Liferay Star Wars Demo API
 Bundle-SymbolicName: com.liferay.star.wars.demo.api
 Bundle-Version: 1.0.0
 Export-Package:\
+	com.liferay.star.wars.demo.constants,\
 	com.liferay.star.wars.demo.exception,\
 	com.liferay.star.wars.demo.model,\
 	com.liferay.star.wars.demo.service,\
