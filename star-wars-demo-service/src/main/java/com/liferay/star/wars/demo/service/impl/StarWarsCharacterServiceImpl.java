@@ -111,6 +111,13 @@ public class StarWarsCharacterServiceImpl
 	}
 
 	@Override
+	public List<StarWarsCharacter> getStarWarsCharacters(long groupId)
+		throws PortalException {
+
+		return starWarsCharacterPersistence.filterFindByGroupId(groupId);
+	}
+
+	@Override
 	public List<StarWarsCharacter> getStarWarsCharacters(
 			long groupId, int start, int end)
 		throws PortalException {
