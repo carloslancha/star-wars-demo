@@ -16,9 +16,16 @@ package com.liferay.star.wars.demo.service.http;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import com.liferay.star.wars.demo.service.StarWarsCharacterServiceUtil;
+
+import java.rmi.RemoteException;
+
 /**
  * Provides the SOAP utility for the
- * {@link com.liferay.star.wars.demo.service.StarWarsCharacterServiceUtil} service utility. The
+ * {@link StarWarsCharacterServiceUtil} service utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it is difficult for SOAP to
  * support certain types.
@@ -53,9 +60,168 @@ import aQute.bnd.annotation.ProviderType;
  * @author Brian Wing Shun Chan
  * @see StarWarsCharacterServiceHttp
  * @see com.liferay.star.wars.demo.model.StarWarsCharacterSoap
- * @see com.liferay.star.wars.demo.service.StarWarsCharacterServiceUtil
+ * @see StarWarsCharacterServiceUtil
  * @generated
  */
 @ProviderType
 public class StarWarsCharacterServiceSoap {
+	public static com.liferay.star.wars.demo.model.StarWarsCharacterSoap addStarWarsCharacter(
+		long groupId, java.lang.String name, java.lang.String picture,
+		java.lang.String fraction, java.lang.String description,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws RemoteException {
+		try {
+			com.liferay.star.wars.demo.model.StarWarsCharacter returnValue = StarWarsCharacterServiceUtil.addStarWarsCharacter(groupId,
+					name, picture, fraction, description, serviceContext);
+
+			return com.liferay.star.wars.demo.model.StarWarsCharacterSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.star.wars.demo.model.StarWarsCharacterSoap deleteStarWarsCharacter(
+		long starWarsCharacterId) throws RemoteException {
+		try {
+			com.liferay.star.wars.demo.model.StarWarsCharacter returnValue = StarWarsCharacterServiceUtil.deleteStarWarsCharacter(starWarsCharacterId);
+
+			return com.liferay.star.wars.demo.model.StarWarsCharacterSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.star.wars.demo.model.StarWarsCharacterSoap[] deleteStarWarsCharacters(
+		long[] starWarsCharacterIds) throws RemoteException {
+		try {
+			java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> returnValue =
+				StarWarsCharacterServiceUtil.deleteStarWarsCharacters(starWarsCharacterIds);
+
+			return com.liferay.star.wars.demo.model.StarWarsCharacterSoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.star.wars.demo.model.StarWarsCharacterSoap fetchStarWarsCharacter(
+		long starWarsCharacterId) throws RemoteException {
+		try {
+			com.liferay.star.wars.demo.model.StarWarsCharacter returnValue = StarWarsCharacterServiceUtil.fetchStarWarsCharacter(starWarsCharacterId);
+
+			return com.liferay.star.wars.demo.model.StarWarsCharacterSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.star.wars.demo.model.StarWarsCharacterSoap[] getStarWarsCharacters(
+		long groupId, int start, int end) throws RemoteException {
+		try {
+			java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> returnValue =
+				StarWarsCharacterServiceUtil.getStarWarsCharacters(groupId,
+					start, end);
+
+			return com.liferay.star.wars.demo.model.StarWarsCharacterSoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.star.wars.demo.model.StarWarsCharacterSoap[] getStarWarsCharacters(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.star.wars.demo.model.StarWarsCharacter> orderByComparator)
+		throws RemoteException {
+		try {
+			java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> returnValue =
+				StarWarsCharacterServiceUtil.getStarWarsCharacters(groupId,
+					start, end, orderByComparator);
+
+			return com.liferay.star.wars.demo.model.StarWarsCharacterSoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.star.wars.demo.model.StarWarsCharacterSoap[] getStarWarsCharacters(
+		long groupId, java.lang.String name, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.star.wars.demo.model.StarWarsCharacter> orderByComparator)
+		throws RemoteException {
+		try {
+			java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> returnValue =
+				StarWarsCharacterServiceUtil.getStarWarsCharacters(groupId,
+					name, start, end, orderByComparator);
+
+			return com.liferay.star.wars.demo.model.StarWarsCharacterSoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static int getStarWarsCharactersCount(long groupId)
+		throws RemoteException {
+		try {
+			int returnValue = StarWarsCharacterServiceUtil.getStarWarsCharactersCount(groupId);
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static int getStarWarsCharactersCount(long groupId,
+		java.lang.String name) throws RemoteException {
+		try {
+			int returnValue = StarWarsCharacterServiceUtil.getStarWarsCharactersCount(groupId,
+					name);
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.star.wars.demo.model.StarWarsCharacterSoap updateStarWarsCharacter(
+		long starWarsCharacterId, java.lang.String name,
+		java.lang.String description) throws RemoteException {
+		try {
+			com.liferay.star.wars.demo.model.StarWarsCharacter returnValue = StarWarsCharacterServiceUtil.updateStarWarsCharacter(starWarsCharacterId,
+					name, description);
+
+			return com.liferay.star.wars.demo.model.StarWarsCharacterSoap.toSoapModel(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(StarWarsCharacterServiceSoap.class);
 }

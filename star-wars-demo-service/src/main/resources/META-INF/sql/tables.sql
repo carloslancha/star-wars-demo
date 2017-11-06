@@ -7,7 +7,7 @@ create table StarWarsCharacter (
 	createDate DATE null,
 	modifiedDate DATE null,
 	name VARCHAR(75) null,
-	picture VARCHAR(75) null,
+	picture VARCHAR(255) null,
 	fraction VARCHAR(75) null,
-	description VARCHAR(75) null
+	description STRING null
 );

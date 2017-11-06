@@ -117,11 +117,12 @@ public abstract class StarWarsCharacterLocalServiceBaseImpl
 	 *
 	 * @param starWarsCharacter the star wars character
 	 * @return the star wars character that was removed
+	 * @throws PortalException
 	 */
 	@Indexable(type = IndexableType.DELETE)
 	@Override
 	public StarWarsCharacter deleteStarWarsCharacter(
-		StarWarsCharacter starWarsCharacter) {
+		StarWarsCharacter starWarsCharacter) throws PortalException {
 		return starWarsCharacterPersistence.remove(starWarsCharacter);
 	}
 

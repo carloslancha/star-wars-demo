@@ -34,6 +34,17 @@ public class StarWarsCharacterLocalServiceWrapper
 		_starWarsCharacterLocalService = starWarsCharacterLocalService;
 	}
 
+	@Override
+	public com.liferay.star.wars.demo.model.StarWarsCharacter addStarWarsCharacter(
+		long userId, long groupId, java.lang.String name,
+		java.lang.String picture, java.lang.String fraction,
+		java.lang.String description,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _starWarsCharacterLocalService.addStarWarsCharacter(userId,
+			groupId, name, picture, fraction, description, serviceContext);
+	}
+
 	/**
 	* Adds the star wars character to the database. Also notifies the appropriate model listeners.
 	*
@@ -87,10 +98,12 @@ public class StarWarsCharacterLocalServiceWrapper
 	*
 	* @param starWarsCharacter the star wars character
 	* @return the star wars character that was removed
+	* @throws PortalException
 	*/
 	@Override
 	public com.liferay.star.wars.demo.model.StarWarsCharacter deleteStarWarsCharacter(
-		com.liferay.star.wars.demo.model.StarWarsCharacter starWarsCharacter) {
+		com.liferay.star.wars.demo.model.StarWarsCharacter starWarsCharacter)
+		throws com.liferay.portal.kernel.exception.PortalException {
 		return _starWarsCharacterLocalService.deleteStarWarsCharacter(starWarsCharacter);
 	}
 
@@ -244,6 +257,31 @@ public class StarWarsCharacterLocalServiceWrapper
 		return _starWarsCharacterLocalService.getStarWarsCharacters(start, end);
 	}
 
+	@Override
+	public java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> getStarWarsCharacters(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _starWarsCharacterLocalService.getStarWarsCharacters(groupId,
+			start, end);
+	}
+
+	@Override
+	public java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> getStarWarsCharacters(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.star.wars.demo.model.StarWarsCharacter> orderByComparator)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _starWarsCharacterLocalService.getStarWarsCharacters(groupId,
+			start, end, orderByComparator);
+	}
+
+	@Override
+	public java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> getStarWarsCharacters(
+		long groupId, java.lang.String name, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.star.wars.demo.model.StarWarsCharacter> orderByComparator) {
+		return _starWarsCharacterLocalService.getStarWarsCharacters(groupId,
+			name, start, end, orderByComparator);
+	}
+
 	/**
 	* Returns the number of star wars characters.
 	*
@@ -252,6 +290,15 @@ public class StarWarsCharacterLocalServiceWrapper
 	@Override
 	public int getStarWarsCharactersCount() {
 		return _starWarsCharacterLocalService.getStarWarsCharactersCount();
+	}
+
+	@Override
+	public com.liferay.star.wars.demo.model.StarWarsCharacter updateStarWarsCharacter(
+		long starWarsCharacterId, java.lang.String name,
+		java.lang.String description)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _starWarsCharacterLocalService.updateStarWarsCharacter(starWarsCharacterId,
+			name, description);
 	}
 
 	/**

@@ -21,9 +21,16 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
 import com.liferay.portal.kernel.security.access.control.AccessControlled;
 import com.liferay.portal.kernel.service.BaseService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.spring.osgi.OSGiBeanProperties;
 import com.liferay.portal.kernel.transaction.Isolation;
+import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
+import com.liferay.portal.kernel.util.OrderByComparator;
+
+import com.liferay.star.wars.demo.model.StarWarsCharacter;
+
+import java.util.List;
 
 /**
  * Provides the remote service interface for StarWarsCharacter. Methods of this
@@ -49,6 +56,20 @@ public interface StarWarsCharacterService extends BaseService {
 	 *
 	 * Never modify or reference this interface directly. Always use {@link StarWarsCharacterServiceUtil} to access the star wars character remote service. Add custom service methods to {@link com.liferay.star.wars.demo.service.impl.StarWarsCharacterServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	public StarWarsCharacter addStarWarsCharacter(long groupId,
+		java.lang.String name, java.lang.String picture,
+		java.lang.String fraction, java.lang.String description,
+		ServiceContext serviceContext) throws PortalException;
+
+	public StarWarsCharacter deleteStarWarsCharacter(long starWarsCharacterId)
+		throws PortalException;
+
+	public List<StarWarsCharacter> deleteStarWarsCharacters(
+		long[] starWarsCharacterIds) throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public StarWarsCharacter fetchStarWarsCharacter(long starWarsCharacterId)
+		throws PortalException;
 
 	/**
 	* Returns the OSGi service identifier.
@@ -56,4 +77,30 @@ public interface StarWarsCharacterService extends BaseService {
 	* @return the OSGi service identifier
 	*/
 	public java.lang.String getOSGiServiceIdentifier();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<StarWarsCharacter> getStarWarsCharacters(long groupId,
+		int start, int end) throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<StarWarsCharacter> getStarWarsCharacters(long groupId,
+		int start, int end,
+		OrderByComparator<StarWarsCharacter> orderByComparator)
+		throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<StarWarsCharacter> getStarWarsCharacters(long groupId,
+		java.lang.String name, int start, int end,
+		OrderByComparator<StarWarsCharacter> orderByComparator)
+		throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int getStarWarsCharactersCount(long groupId);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int getStarWarsCharactersCount(long groupId, java.lang.String name);
+
+	public StarWarsCharacter updateStarWarsCharacter(long starWarsCharacterId,
+		java.lang.String name, java.lang.String description)
+		throws PortalException;
 }

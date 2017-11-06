@@ -41,6 +41,33 @@ public class StarWarsCharacterServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to {@link com.liferay.star.wars.demo.service.impl.StarWarsCharacterServiceImpl} and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static com.liferay.star.wars.demo.model.StarWarsCharacter addStarWarsCharacter(
+		long groupId, java.lang.String name, java.lang.String picture,
+		java.lang.String fraction, java.lang.String description,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService()
+				   .addStarWarsCharacter(groupId, name, picture, fraction,
+			description, serviceContext);
+	}
+
+	public static com.liferay.star.wars.demo.model.StarWarsCharacter deleteStarWarsCharacter(
+		long starWarsCharacterId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().deleteStarWarsCharacter(starWarsCharacterId);
+	}
+
+	public static java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> deleteStarWarsCharacters(
+		long[] starWarsCharacterIds)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().deleteStarWarsCharacters(starWarsCharacterIds);
+	}
+
+	public static com.liferay.star.wars.demo.model.StarWarsCharacter fetchStarWarsCharacter(
+		long starWarsCharacterId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().fetchStarWarsCharacter(starWarsCharacterId);
+	}
 
 	/**
 	* Returns the OSGi service identifier.
@@ -49,6 +76,47 @@ public class StarWarsCharacterServiceUtil {
 	*/
 	public static java.lang.String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
+	}
+
+	public static java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> getStarWarsCharacters(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().getStarWarsCharacters(groupId, start, end);
+	}
+
+	public static java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> getStarWarsCharacters(
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.star.wars.demo.model.StarWarsCharacter> orderByComparator)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService()
+				   .getStarWarsCharacters(groupId, start, end, orderByComparator);
+	}
+
+	public static java.util.List<com.liferay.star.wars.demo.model.StarWarsCharacter> getStarWarsCharacters(
+		long groupId, java.lang.String name, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.star.wars.demo.model.StarWarsCharacter> orderByComparator)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService()
+				   .getStarWarsCharacters(groupId, name, start, end,
+			orderByComparator);
+	}
+
+	public static int getStarWarsCharactersCount(long groupId) {
+		return getService().getStarWarsCharactersCount(groupId);
+	}
+
+	public static int getStarWarsCharactersCount(long groupId,
+		java.lang.String name) {
+		return getService().getStarWarsCharactersCount(groupId, name);
+	}
+
+	public static com.liferay.star.wars.demo.model.StarWarsCharacter updateStarWarsCharacter(
+		long starWarsCharacterId, java.lang.String name,
+		java.lang.String description)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService()
+				   .updateStarWarsCharacter(starWarsCharacterId, name,
+			description);
 	}
 
 	public static StarWarsCharacterService getService() {

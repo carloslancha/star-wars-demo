@@ -14,28 +14,154 @@
 
 package com.liferay.star.wars.demo.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.security.permission.ActionKeys;
+import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.star.wars.demo.constants.StarWarsDemoActionKeys;
+import com.liferay.star.wars.demo.model.StarWarsCharacter;
 import com.liferay.star.wars.demo.service.base.StarWarsCharacterServiceBaseImpl;
+import com.liferay.star.wars.demo.service.permission.StarWarsCharacterPermission;
+import com.liferay.star.wars.demo.service.permission.StarWarsDemoPermission;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * The implementation of the star wars character remote service.
- *
- * <p>
- * All custom service methods should be put in this class. Whenever methods are added, rerun ServiceBuilder to copy their definitions into the {@link com.liferay.star.wars.demo.service.StarWarsCharacterService} interface.
- *
- * <p>
- * This is a remote service. Methods of this service are expected to have security checks based on the propagated JAAS credentials because this service can be accessed remotely.
- * </p>
- *
- * @author Brian Wing Shun Chan
- * @see StarWarsCharacterServiceBaseImpl
- * @see com.liferay.star.wars.demo.service.StarWarsCharacterServiceUtil
+ * @author Jürgen Kappler
  */
 public class StarWarsCharacterServiceImpl
 	extends StarWarsCharacterServiceBaseImpl {
 
-	/**
-	 * NOTE FOR DEVELOPERS:
-	 *
-	 * Never reference this class directly. Always use {@link com.liferay.star.wars.demo.service.StarWarsCharacterServiceUtil} to access the star wars character remote service.
-	 */
+	@Override
+	public StarWarsCharacter addStarWarsCharacter(
+			long groupId, String name, String picture, String fraction,
+			String description, ServiceContext serviceContext)
+		throws PortalException {
+
+		StarWarsDemoPermission.check(
+			getPermissionChecker(), groupId,
+			StarWarsDemoActionKeys.ADD_STAR_WARS_CHARACTER);
+
+		return starWarsCharacterLocalService.addStarWarsCharacter(
+			getUserId(), groupId, name, picture, fraction, description,
+			serviceContext);
+	}
+
+	@Override
+	public StarWarsCharacter deleteStarWarsCharacter(long starWarsCharacterId)
+		throws PortalException {
+
+		StarWarsCharacterPermission.check(
+			getPermissionChecker(), starWarsCharacterId, ActionKeys.DELETE);
+
+		return starWarsCharacterLocalService.deleteStarWarsCharacter(
+			starWarsCharacterId);
+	}
+
+	@Override
+	public List<StarWarsCharacter> deleteStarWarsCharacters(
+			long[] starWarsCharacterIds)
+		throws PortalException {
+
+		List<StarWarsCharacter> undeletableStarWarsCharacters =
+			new ArrayList<>();
+
+		for (long starWarsCharacterId : starWarsCharacterIds) {
+			try {
+				StarWarsCharacterPermission.check(
+					getPermissionChecker(), starWarsCharacterId,
+					ActionKeys.DELETE);
+
+				starWarsCharacterLocalService.deleteStarWarsCharacter(
+					starWarsCharacterId);
+			}
+			catch (PortalException pe) {
+				if (_log.isDebugEnabled()) {
+					_log.debug(pe, pe);
+				}
+
+				StarWarsCharacter starWarsCharacter =
+					starWarsCharacterPersistence.fetchByPrimaryKey(
+						starWarsCharacterId);
+
+				undeletableStarWarsCharacters.add(starWarsCharacter);
+			}
+		}
+
+		return undeletableStarWarsCharacters;
+	}
+
+	@Override
+	public StarWarsCharacter fetchStarWarsCharacter(long starWarsCharacterId)
+		throws PortalException {
+
+		StarWarsCharacter starWarsCharacter =
+			starWarsCharacterLocalService.fetchStarWarsCharacter(
+				starWarsCharacterId);
+
+		if (starWarsCharacter != null) {
+			StarWarsCharacterPermission.check(
+				getPermissionChecker(), starWarsCharacter, ActionKeys.VIEW);
+		}
+
+		return starWarsCharacter;
+	}
+
+	@Override
+	public List<StarWarsCharacter> getStarWarsCharacters(
+			long groupId, int start, int end)
+		throws PortalException {
+
+		return starWarsCharacterPersistence.filterFindByGroupId(
+			groupId, start, end);
+	}
+
+	@Override
+	public List<StarWarsCharacter> getStarWarsCharacters(
+			long groupId, int start, int end,
+			OrderByComparator<StarWarsCharacter> orderByComparator)
+		throws PortalException {
+
+		return starWarsCharacterPersistence.filterFindByGroupId(
+			groupId, start, end, orderByComparator);
+	}
+
+	@Override
+	public List<StarWarsCharacter> getStarWarsCharacters(
+			long groupId, String name, int start, int end,
+			OrderByComparator<StarWarsCharacter> orderByComparator)
+		throws PortalException {
+
+		return starWarsCharacterPersistence.filterFindByG_LikeN(
+			groupId, name, start, end, orderByComparator);
+	}
+
+	@Override
+	public int getStarWarsCharactersCount(long groupId) {
+		return starWarsCharacterPersistence.filterCountByGroupId(groupId);
+	}
+
+	@Override
+	public int getStarWarsCharactersCount(long groupId, String name) {
+		return starWarsCharacterPersistence.filterCountByG_LikeN(groupId, name);
+	}
+
+	@Override
+	public StarWarsCharacter updateStarWarsCharacter(
+			long starWarsCharacterId, String name, String description)
+		throws PortalException {
+
+		StarWarsCharacterPermission.check(
+			getPermissionChecker(), starWarsCharacterId, ActionKeys.UPDATE);
+
+		return starWarsCharacterLocalService.updateStarWarsCharacter(
+			starWarsCharacterId, name, description);
+	}
+
+	private static final Log _log = LogFactoryUtil.getLog(
+		StarWarsCharacterServiceImpl.class);
+
 }

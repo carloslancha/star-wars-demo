@@ -159,6 +159,60 @@ public interface StarWarsCharacterPersistence extends BasePersistence<StarWarsCh
 		throws NoSuchCharacterException;
 
 	/**
+	* Returns all the star wars characters that the user has permission to view where groupId = &#63;.
+	*
+	* @param groupId the group ID
+	* @return the matching star wars characters that the user has permission to view
+	*/
+	public java.util.List<StarWarsCharacter> filterFindByGroupId(long groupId);
+
+	/**
+	* Returns a range of all the star wars characters that the user has permission to view where groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link StarWarsCharacterModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param start the lower bound of the range of star wars characters
+	* @param end the upper bound of the range of star wars characters (not inclusive)
+	* @return the range of matching star wars characters that the user has permission to view
+	*/
+	public java.util.List<StarWarsCharacter> filterFindByGroupId(long groupId,
+		int start, int end);
+
+	/**
+	* Returns an ordered range of all the star wars characters that the user has permissions to view where groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link StarWarsCharacterModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param start the lower bound of the range of star wars characters
+	* @param end the upper bound of the range of star wars characters (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching star wars characters that the user has permission to view
+	*/
+	public java.util.List<StarWarsCharacter> filterFindByGroupId(long groupId,
+		int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<StarWarsCharacter> orderByComparator);
+
+	/**
+	* Returns the star wars characters before and after the current star wars character in the ordered set of star wars characters that the user has permission to view where groupId = &#63;.
+	*
+	* @param starWarsCharacterId the primary key of the current star wars character
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next star wars character
+	* @throws NoSuchCharacterException if a star wars character with the primary key could not be found
+	*/
+	public StarWarsCharacter[] filterFindByGroupId_PrevAndNext(
+		long starWarsCharacterId, long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator<StarWarsCharacter> orderByComparator)
+		throws NoSuchCharacterException;
+
+	/**
 	* Removes all the star wars characters where groupId = &#63; from the database.
 	*
 	* @param groupId the group ID
@@ -172,6 +226,14 @@ public interface StarWarsCharacterPersistence extends BasePersistence<StarWarsCh
 	* @return the number of matching star wars characters
 	*/
 	public int countByGroupId(long groupId);
+
+	/**
+	* Returns the number of star wars characters that the user has permission to view where groupId = &#63;.
+	*
+	* @param groupId the group ID
+	* @return the number of matching star wars characters that the user has permission to view
+	*/
+	public int filterCountByGroupId(long groupId);
 
 	/**
 	* Returns the star wars character where groupId = &#63; and name = &#63; or throws a {@link NoSuchCharacterException} if it could not be found.
@@ -355,6 +417,65 @@ public interface StarWarsCharacterPersistence extends BasePersistence<StarWarsCh
 		throws NoSuchCharacterException;
 
 	/**
+	* Returns all the star wars characters that the user has permission to view where groupId = &#63; and name LIKE &#63;.
+	*
+	* @param groupId the group ID
+	* @param name the name
+	* @return the matching star wars characters that the user has permission to view
+	*/
+	public java.util.List<StarWarsCharacter> filterFindByG_LikeN(long groupId,
+		java.lang.String name);
+
+	/**
+	* Returns a range of all the star wars characters that the user has permission to view where groupId = &#63; and name LIKE &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link StarWarsCharacterModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param name the name
+	* @param start the lower bound of the range of star wars characters
+	* @param end the upper bound of the range of star wars characters (not inclusive)
+	* @return the range of matching star wars characters that the user has permission to view
+	*/
+	public java.util.List<StarWarsCharacter> filterFindByG_LikeN(long groupId,
+		java.lang.String name, int start, int end);
+
+	/**
+	* Returns an ordered range of all the star wars characters that the user has permissions to view where groupId = &#63; and name LIKE &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link StarWarsCharacterModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param groupId the group ID
+	* @param name the name
+	* @param start the lower bound of the range of star wars characters
+	* @param end the upper bound of the range of star wars characters (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching star wars characters that the user has permission to view
+	*/
+	public java.util.List<StarWarsCharacter> filterFindByG_LikeN(long groupId,
+		java.lang.String name, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<StarWarsCharacter> orderByComparator);
+
+	/**
+	* Returns the star wars characters before and after the current star wars character in the ordered set of star wars characters that the user has permission to view where groupId = &#63; and name LIKE &#63;.
+	*
+	* @param starWarsCharacterId the primary key of the current star wars character
+	* @param groupId the group ID
+	* @param name the name
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next star wars character
+	* @throws NoSuchCharacterException if a star wars character with the primary key could not be found
+	*/
+	public StarWarsCharacter[] filterFindByG_LikeN_PrevAndNext(
+		long starWarsCharacterId, long groupId, java.lang.String name,
+		com.liferay.portal.kernel.util.OrderByComparator<StarWarsCharacter> orderByComparator)
+		throws NoSuchCharacterException;
+
+	/**
 	* Removes all the star wars characters where groupId = &#63; and name LIKE &#63; from the database.
 	*
 	* @param groupId the group ID
@@ -370,6 +491,15 @@ public interface StarWarsCharacterPersistence extends BasePersistence<StarWarsCh
 	* @return the number of matching star wars characters
 	*/
 	public int countByG_LikeN(long groupId, java.lang.String name);
+
+	/**
+	* Returns the number of star wars characters that the user has permission to view where groupId = &#63; and name LIKE &#63;.
+	*
+	* @param groupId the group ID
+	* @param name the name
+	* @return the number of matching star wars characters that the user has permission to view
+	*/
+	public int filterCountByG_LikeN(long groupId, java.lang.String name);
 
 	/**
 	* Caches the star wars character in the entity cache if it is enabled.

@@ -27,6 +27,7 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
 import com.liferay.portal.kernel.service.PersistedModelLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
@@ -60,6 +61,10 @@ public interface StarWarsCharacterLocalService extends BaseLocalService,
 	 *
 	 * Never modify or reference this interface directly. Always use {@link StarWarsCharacterLocalServiceUtil} to access the star wars character local service. Add custom service methods to {@link com.liferay.star.wars.demo.service.impl.StarWarsCharacterLocalServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	public StarWarsCharacter addStarWarsCharacter(long userId, long groupId,
+		java.lang.String name, java.lang.String picture,
+		java.lang.String fraction, java.lang.String description,
+		ServiceContext serviceContext) throws PortalException;
 
 	/**
 	* Adds the star wars character to the database. Also notifies the appropriate model listeners.
@@ -102,10 +107,11 @@ public interface StarWarsCharacterLocalService extends BaseLocalService,
 	*
 	* @param starWarsCharacter the star wars character
 	* @return the star wars character that was removed
+	* @throws PortalException
 	*/
 	@Indexable(type = IndexableType.DELETE)
 	public StarWarsCharacter deleteStarWarsCharacter(
-		StarWarsCharacter starWarsCharacter);
+		StarWarsCharacter starWarsCharacter) throws PortalException;
 
 	public DynamicQuery dynamicQuery();
 
@@ -212,6 +218,21 @@ public interface StarWarsCharacterLocalService extends BaseLocalService,
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<StarWarsCharacter> getStarWarsCharacters(int start, int end);
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<StarWarsCharacter> getStarWarsCharacters(long groupId,
+		int start, int end) throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<StarWarsCharacter> getStarWarsCharacters(long groupId,
+		int start, int end,
+		OrderByComparator<StarWarsCharacter> orderByComparator)
+		throws PortalException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<StarWarsCharacter> getStarWarsCharacters(long groupId,
+		java.lang.String name, int start, int end,
+		OrderByComparator<StarWarsCharacter> orderByComparator);
+
 	/**
 	* Returns the number of star wars characters.
 	*
@@ -219,6 +240,10 @@ public interface StarWarsCharacterLocalService extends BaseLocalService,
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getStarWarsCharactersCount();
+
+	public StarWarsCharacter updateStarWarsCharacter(long starWarsCharacterId,
+		java.lang.String name, java.lang.String description)
+		throws PortalException;
 
 	/**
 	* Updates the star wars character in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
