@@ -224,10 +224,11 @@ public class StarWarsCharacterServiceSoap {
 
 	public static com.liferay.star.wars.demo.model.StarWarsCharacterSoap updateStarWarsCharacter(
 		long starWarsCharacterId, java.lang.String name,
+		java.lang.String picture, java.lang.String fraction,
 		java.lang.String description) throws RemoteException {
 		try {
 			com.liferay.star.wars.demo.model.StarWarsCharacter returnValue = StarWarsCharacterServiceUtil.updateStarWarsCharacter(starWarsCharacterId,
-					name, description);
+					name, picture, fraction, description);
 
 			return com.liferay.star.wars.demo.model.StarWarsCharacterSoap.toSoapModel(returnValue);
 		}

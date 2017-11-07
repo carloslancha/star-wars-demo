@@ -277,11 +277,12 @@ public class StarWarsCharacterLocalServiceUtil {
 
 	public static com.liferay.star.wars.demo.model.StarWarsCharacter updateStarWarsCharacter(
 		long starWarsCharacterId, java.lang.String name,
+		java.lang.String picture, java.lang.String fraction,
 		java.lang.String description)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService()
-				   .updateStarWarsCharacter(starWarsCharacterId, name,
-			description);
+				   .updateStarWarsCharacter(starWarsCharacterId, name, picture,
+			fraction, description);
 	}
 
 	/**

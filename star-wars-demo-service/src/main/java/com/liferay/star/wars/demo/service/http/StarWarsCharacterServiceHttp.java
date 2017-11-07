@@ -380,7 +380,8 @@ public class StarWarsCharacterServiceHttp {
 
 	public static com.liferay.star.wars.demo.model.StarWarsCharacter updateStarWarsCharacter(
 		HttpPrincipal httpPrincipal, long starWarsCharacterId,
-		java.lang.String name, java.lang.String description)
+		java.lang.String name, java.lang.String picture,
+		java.lang.String fraction, java.lang.String description)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		try {
 			MethodKey methodKey = new MethodKey(StarWarsCharacterServiceUtil.class,
@@ -388,7 +389,7 @@ public class StarWarsCharacterServiceHttp {
 					_updateStarWarsCharacterParameterTypes10);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey,
-					starWarsCharacterId, name, description);
+					starWarsCharacterId, name, picture, fraction, description);
 
 			Object returnObj = null;
 
@@ -448,6 +449,7 @@ public class StarWarsCharacterServiceHttp {
 			long.class, java.lang.String.class
 		};
 	private static final Class<?>[] _updateStarWarsCharacterParameterTypes10 = new Class[] {
-			long.class, java.lang.String.class, java.lang.String.class
+			long.class, java.lang.String.class, java.lang.String.class,
+			java.lang.String.class, java.lang.String.class
 		};
 }

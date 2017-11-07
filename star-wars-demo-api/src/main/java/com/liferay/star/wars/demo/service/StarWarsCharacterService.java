@@ -105,6 +105,7 @@ public interface StarWarsCharacterService extends BaseService {
 	public int getStarWarsCharactersCount(long groupId, java.lang.String name);
 
 	public StarWarsCharacter updateStarWarsCharacter(long starWarsCharacterId,
-		java.lang.String name, java.lang.String description)
+		java.lang.String name, java.lang.String picture,
+		java.lang.String fraction, java.lang.String description)
 		throws PortalException;
 }

@@ -242,7 +242,8 @@ public interface StarWarsCharacterLocalService extends BaseLocalService,
 	public int getStarWarsCharactersCount();
 
 	public StarWarsCharacter updateStarWarsCharacter(long starWarsCharacterId,
-		java.lang.String name, java.lang.String description)
+		java.lang.String name, java.lang.String picture,
+		java.lang.String fraction, java.lang.String description)
 		throws PortalException;
 
 	/**

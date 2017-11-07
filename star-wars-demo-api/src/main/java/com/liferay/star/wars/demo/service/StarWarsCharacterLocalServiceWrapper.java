@@ -295,10 +295,11 @@ public class StarWarsCharacterLocalServiceWrapper
 	@Override
 	public com.liferay.star.wars.demo.model.StarWarsCharacter updateStarWarsCharacter(
 		long starWarsCharacterId, java.lang.String name,
+		java.lang.String picture, java.lang.String fraction,
 		java.lang.String description)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return _starWarsCharacterLocalService.updateStarWarsCharacter(starWarsCharacterId,
-			name, description);
+			name, picture, fraction, description);
 	}
 
 	/**
