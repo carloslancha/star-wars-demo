@@ -1,0 +1,37 @@
+{namespace ViewCharacter}
+
+/**
+ * Prints the detail of a character.
+ */
+{template .render}
+	{@param backURL: string}
+	{@param id: string}
+	{@param description: string}
+	{@param fraction: string}
+	{@param name: string}
+	{@param picture: string}
+
+	<div class="container" id="{$id}">
+		<div class="row mb-3">
+			<div class="col-md-12">
+				<a href="{$backURL}">Back</a>
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<div class="col-md-12">
+				<div class="card card-type-asset">
+					<div class="aspect-ratio bg-checkered card-item-first">
+						<img alt="{$name}" class="aspect-ratio-item-center-middle aspect-ratio-item-fluid" src="{$picture}">
+					</div>
+
+					<div class="card-body" style="text-align:center;">
+						<div class="card-title">{$name}</div>
+						<div class="card-subtitle">{$fraction}</div>
+						<p class="card-text">{$description}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{/template}

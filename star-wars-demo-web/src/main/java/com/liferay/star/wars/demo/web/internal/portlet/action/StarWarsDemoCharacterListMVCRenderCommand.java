@@ -118,6 +118,19 @@ public class StarWarsDemoCharacterListMVCRenderCommand
 		return portletURL.toString();
 	}
 
+	protected String getViewCharacterURL(
+		StarWarsCharacter starWarsCharacter, RenderResponse renderResponse) {
+
+		PortletURL portletURL = renderResponse.createRenderURL();
+
+		portletURL.setParameter("mvcRenderCommandName", "view_character");
+		portletURL.setParameter(
+			"starWarsCharacterId",
+			String.valueOf(starWarsCharacter.getStarWarsCharacterId()));
+
+		return portletURL.toString();
+	}
+
 	protected List<Map<String, Object>> toSoyData(
 		List<StarWarsCharacter> starWarsCharacters,
 		RenderResponse renderResponse) {
@@ -139,6 +152,9 @@ public class StarWarsDemoCharacterListMVCRenderCommand
 				"fraction", starWarsCharacter.getFraction());
 			soyStarWarsCharacter.put("name", starWarsCharacter.getName());
 			soyStarWarsCharacter.put("picture", starWarsCharacter.getPicture());
+			soyStarWarsCharacter.put(
+				"viewURL",
+				getViewCharacterURL(starWarsCharacter, renderResponse));
 
 			soyStarWarsCharacters.add(soyStarWarsCharacter);
 		}

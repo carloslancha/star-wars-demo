@@ -102,7 +102,7 @@
 					<div class="card-row">
 						<div class="flex-col flex-col-expand">
 							<div class="card-title text-truncate" title="{$character.name}">
-								{$character.name}
+								<a href="{$character.viewURL}">{$character.name}</a>
 							</div>
 							<div class="card-subtitle text-truncate" title="{$character.fraction}">{$character.fraction}</div>
 						</div>
@@ -151,7 +151,7 @@
 
 					<div class="flex-col flex-col-expand">
 						<h4 class="list-group-title text-truncate">
-							{$character.name}
+							<a href="{$character.viewURL}">{$character.name}</a>
 						</h4>
 						<p class="list-group-subtitle text-truncate">{$character.fraction}</p>
 					</div>
