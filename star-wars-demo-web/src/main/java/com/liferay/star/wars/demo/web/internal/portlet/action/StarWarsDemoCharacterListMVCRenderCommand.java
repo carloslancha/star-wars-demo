@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.portlet.PortletURL;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
@@ -75,9 +76,19 @@ public class StarWarsDemoCharacterListMVCRenderCommand
 			}
 		}
 
+		template.put("addCharacterURL", getAddCharacterURL(renderResponse));
+
 		template.put("pathThemeImages", themeDisplay.getPathThemeImages());
 
 		return "CharacterList";
+	}
+
+	protected String getAddCharacterURL(RenderResponse renderResponse) {
+		PortletURL portletURL = renderResponse.createRenderURL();
+
+		portletURL.setParameter("mvcRenderCommandName", "edit_character");
+
+		return portletURL.toString();
 	}
 
 	protected List<Map<String, Object>> toSoyData(

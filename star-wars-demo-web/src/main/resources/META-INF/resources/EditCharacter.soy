@@ -1,0 +1,53 @@
+{namespace EditCharacter}
+
+/**
+ * Prints an add/edit character form.
+ */
+{template .render}
+	{@param backURL: string}
+	{@param id: string}
+	{@param saveCharacterURL: string}
+
+	<div id="{$id}" class="container">
+		<div class="row mb-3">
+			<div class="col-md-12">
+				<a href="{$backURL}">Back</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 form-container">
+				<form action="{$saveCharacterURL}" enctype="multipart/form-data" method="POST">
+					<div class="form-group">
+						<label>Name</label>
+						<input class="form-control" name="{$ij.portletNamespace}name" type="text" />
+					</div>
+
+					<div class="form-group">
+						<label>Fraction</label>
+						<select class="form-control" name="{$ij.portletNamespace}fraction">
+							<option value="Jedi">Jedi</option>
+							<option value="Rebel">Rebel</option>
+							<option value="Sith">Sith</option>
+							<option value="Stormtrooper">Stormtrooper</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label>Picture</label>
+						<input class="form-control" name="{$ij.portletNamespace}picture" type="text" />
+					</div>
+
+					<div class="form-group">
+						<label>Description</label>
+						<textarea class="form-control" name="{$ij.portletNamespace}description"></textarea>
+					</div>
+
+					<button class="btn btn-primary" type="submit">
+						Add
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+{/template}

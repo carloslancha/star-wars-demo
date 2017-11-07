@@ -4,6 +4,7 @@
  * Prints a list of saved characters.
  */
 {template .render}
+	{@param addCharacterURL: string}
 	{@param characters: list<?>}
 	{@param id: string}
 
@@ -13,6 +14,12 @@
 				{call .cardsView}
 					{param characters: $characters /}
 				{/call}
+			</div>
+		</div>
+
+		<div class="button-row">
+			<div class="col-md-12">
+				<a class="btn btn-primary" href="{$addCharacterURL}">Add Character</a>
 			</div>
 		</div>
 	</div>
