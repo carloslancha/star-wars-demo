@@ -4,9 +4,47 @@
  * Prints a list of saved characters.
  */
 {template .render}
+	{@param characters: list<?>}
 	{@param id: string}
 
 	<div id="{$id}">
-		<h1>Hello Star Wars Demo</h1>
+		<div class="container-fluid">
+			<div class="row">
+				{call .cardsView}
+					{param characters: $characters /}
+				{/call}
+			</div>
+		</div>
 	</div>
+{/template}
+
+/**
+ * Prints a character card list
+ */
+{template .cardsView}
+	{@param characters: list<?>}
+
+	{foreach $character in $characters}
+		<div class="col-md-4">
+			<div class="card card-type-asset">
+				<div class="aspect-ratio bg-checkered card-item-first">
+					<img alt="{$character.name}" class="aspect-ratio-item-center-middle aspect-ratio-item-fluid" src="{$character.picture}">
+				</div>
+				<div class="card-body">
+					<div class="card-row">
+						<div class="flex-col flex-col-expand">
+							<div class="card-title text-truncate" title="{$character.name}">
+								{$character.name}
+							</div>
+							<div class="card-subtitle text-truncate" title="{$character.fraction}">{$character.fraction}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{ifempty}
+		<div class="alert alert-default">
+			There are no Characters to display.
+		</div>
+	{/foreach}
 {/template}
