@@ -7,12 +7,14 @@
 	{@param addCharacterURL: string}
 	{@param characters: list<?>}
 	{@param id: string}
+	{@param pathThemeImages: string}
 
 	<div id="{$id}">
 		<div class="container-fluid">
 			<div class="row">
 				{call .cardsView}
 					{param characters: $characters /}
+					{param pathThemeImages: $pathThemeImages /}
 				{/call}
 			</div>
 		</div>
@@ -30,6 +32,7 @@
  */
 {template .cardsView}
 	{@param characters: list<?>}
+	{@param pathThemeImages: string}
 
 	{foreach $character in $characters}
 		<div class="col-md-4">
@@ -44,6 +47,18 @@
 								{$character.name}
 							</div>
 							<div class="card-subtitle text-truncate" title="{$character.fraction}">{$character.fraction}</div>
+						</div>
+						<div class="flex-col">
+							<div class="dropdown dropdown-action">
+								<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#1" role="button">
+									<svg class="lexicon-icon">
+										<use xlink:href="{$pathThemeImages}/lexicon/icons.svg#ellipsis-v"></use>
+									</svg>
+								</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" href="{$character.editURL}">Edit</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -14,11 +14,15 @@
 
 package com.liferay.star.wars.demo.web.internal.portlet.action;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCRenderCommand;
 import com.liferay.portal.kernel.template.Template;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
+import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.star.wars.demo.constants.StarWarsDemoPortletKeys;
+import com.liferay.star.wars.demo.model.StarWarsCharacter;
+import com.liferay.star.wars.demo.service.StarWarsCharacterService;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.PortletURL;
@@ -26,6 +30,7 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author Carlos Lancha
@@ -53,8 +58,38 @@ public class StarWarsDemoEditCharacterMVCRenderCommand
 
 		PortletURL saveCharacterURL = renderResponse.createActionURL();
 
-		saveCharacterURL.setParameter(
-			ActionRequest.ACTION_NAME, "add_character");
+		long starWarsCharacterId = ParamUtil.getLong(
+			renderRequest, "starWarsCharacterId");
+
+		boolean editMode = false;
+
+		if (starWarsCharacterId > 0) {
+			editMode = true;
+
+			try {
+				StarWarsCharacter starWarsCharacter =
+					_starWarsCharacterService.fetchStarWarsCharacter(
+						starWarsCharacterId);
+
+				template.put("description", starWarsCharacter.getDescription());
+				template.put("fraction", starWarsCharacter.getFraction());
+				template.put("name", starWarsCharacter.getName());
+				template.put("picture", starWarsCharacter.getPicture());
+
+				saveCharacterURL.setParameter(
+					ActionRequest.ACTION_NAME, "save_character");
+				saveCharacterURL.setParameter(
+					"starWarsCharacterId", String.valueOf(starWarsCharacterId));
+			} catch (PortalException e) {
+				e.printStackTrace();
+			}
+		}
+		else {
+			saveCharacterURL.setParameter(
+				ActionRequest.ACTION_NAME, "add_character");
+		}
+
+		template.put("editMode", editMode);
 
 		template.put("backURL", getBackURL(renderResponse));
 
@@ -72,5 +107,8 @@ public class StarWarsDemoEditCharacterMVCRenderCommand
 
 		return portletURL.toString();
 	}
+
+	@Reference
+	private StarWarsCharacterService _starWarsCharacterService;
 
 }

@@ -91,6 +91,19 @@ public class StarWarsDemoCharacterListMVCRenderCommand
 		return portletURL.toString();
 	}
 
+	protected String getEditCharacterURL(
+		StarWarsCharacter starWarsCharacter, RenderResponse renderResponse) {
+
+		PortletURL portletURL = renderResponse.createRenderURL();
+
+		portletURL.setParameter("mvcRenderCommandName", "edit_character");
+		portletURL.setParameter(
+			"starWarsCharacterId",
+			String.valueOf(starWarsCharacter.getStarWarsCharacterId()));
+
+		return portletURL.toString();
+	}
+
 	protected List<Map<String, Object>> toSoyData(
 		List<StarWarsCharacter> starWarsCharacters,
 		RenderResponse renderResponse) {
@@ -102,6 +115,9 @@ public class StarWarsDemoCharacterListMVCRenderCommand
 
 			soyStarWarsCharacter.put(
 				"description", starWarsCharacter.getDescription());
+			soyStarWarsCharacter.put(
+				"editURL",
+				getEditCharacterURL(starWarsCharacter, renderResponse));
 			soyStarWarsCharacter.put(
 				"fraction", starWarsCharacter.getFraction());
 			soyStarWarsCharacter.put("name", starWarsCharacter.getName());
