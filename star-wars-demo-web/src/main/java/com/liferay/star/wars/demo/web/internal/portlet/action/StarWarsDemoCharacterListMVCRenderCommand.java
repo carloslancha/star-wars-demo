@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.portlet.ActionRequest;
 import javax.portlet.PortletURL;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
@@ -91,6 +92,19 @@ public class StarWarsDemoCharacterListMVCRenderCommand
 		return portletURL.toString();
 	}
 
+	protected String getDeleteCharacterURL(
+		StarWarsCharacter starWarsCharacter, RenderResponse renderResponse) {
+
+		PortletURL portletURL = renderResponse.createActionURL();
+
+		portletURL.setParameter(ActionRequest.ACTION_NAME, "delete_character");
+		portletURL.setParameter(
+			"starWarsCharacterId",
+			String.valueOf(starWarsCharacter.getStarWarsCharacterId()));
+
+		return portletURL.toString();
+	}
+
 	protected String getEditCharacterURL(
 		StarWarsCharacter starWarsCharacter, RenderResponse renderResponse) {
 
@@ -113,6 +127,9 @@ public class StarWarsDemoCharacterListMVCRenderCommand
 		for (StarWarsCharacter starWarsCharacter : starWarsCharacters) {
 			Map<String, Object> soyStarWarsCharacter = new HashMap<>();
 
+			soyStarWarsCharacter.put(
+				"deleteURL",
+				getDeleteCharacterURL(starWarsCharacter, renderResponse));
 			soyStarWarsCharacter.put(
 				"description", starWarsCharacter.getDescription());
 			soyStarWarsCharacter.put(
