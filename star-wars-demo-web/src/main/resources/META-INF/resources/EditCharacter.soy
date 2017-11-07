@@ -7,6 +7,11 @@
 	{@param backURL: string}
 	{@param id: string}
 	{@param saveCharacterURL: string}
+	{@param? description: string}
+	{@param? editMode: bool}
+	{@param? fraction: string}
+	{@param? name: string}
+	{@param? picture: string}
 
 	<div id="{$id}" class="container">
 		<div class="row mb-3">
@@ -20,31 +25,35 @@
 				<form action="{$saveCharacterURL}" enctype="multipart/form-data" method="POST">
 					<div class="form-group">
 						<label>Name</label>
-						<input class="form-control" name="{$ij.portletNamespace}name" type="text" />
+						<input class="form-control" name="{$ij.portletNamespace}name" type="text" value="{$name ?: ''}"  />
 					</div>
 
 					<div class="form-group">
 						<label>Fraction</label>
 						<select class="form-control" name="{$ij.portletNamespace}fraction">
-							<option value="Jedi">Jedi</option>
-							<option value="Rebel">Rebel</option>
-							<option value="Sith">Sith</option>
-							<option value="Stormtrooper">Stormtrooper</option>
+							<option value="Jedi" {if $fraction == 'Jedi'}selected{/if}>Jedi</option>
+							<option value="Rebel" {if $fraction == 'Rebel'}selected{/if}>Rebel</option>
+							<option value="Sith" {if $fraction == 'Sith'}selected{/if}>Sith</option>
+							<option value="Stormtrooper" {if $fraction == 'Stormtrooper'}selected{/if}>Stormtrooper</option>
 						</select>
 					</div>
 
 					<div class="form-group">
 						<label>Picture</label>
-						<input class="form-control" name="{$ij.portletNamespace}picture" type="text" />
+						<input class="form-control" name="{$ij.portletNamespace}picture" type="text" value="{$picture ?: ''}"  />
 					</div>
 
 					<div class="form-group">
 						<label>Description</label>
-						<textarea class="form-control" name="{$ij.portletNamespace}description"></textarea>
+						<textarea class="form-control" name="{$ij.portletNamespace}description">{$description}</textarea>
 					</div>
 
 					<button class="btn btn-primary" type="submit">
-						Add
+						{if $editMode}
+							Edit
+						{else}
+							Add
+						{/if}
 					</button>
 				</form>
 			</div>
