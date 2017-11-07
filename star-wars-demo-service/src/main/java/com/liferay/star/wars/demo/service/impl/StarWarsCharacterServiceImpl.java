@@ -158,14 +158,15 @@ public class StarWarsCharacterServiceImpl
 
 	@Override
 	public StarWarsCharacter updateStarWarsCharacter(
-			long starWarsCharacterId, String name, String description)
+			long starWarsCharacterId, String name, String picture,
+			String fraction, String description)
 		throws PortalException {
 
 		StarWarsCharacterPermission.check(
 			getPermissionChecker(), starWarsCharacterId, ActionKeys.UPDATE);
 
 		return starWarsCharacterLocalService.updateStarWarsCharacter(
-			starWarsCharacterId, name, description);
+			starWarsCharacterId, name, picture, fraction, description);
 	}
 
 	private static final Log _log = LogFactoryUtil.getLog(

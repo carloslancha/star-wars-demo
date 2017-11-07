@@ -144,7 +144,8 @@ public class StarWarsCharacterLocalServiceImpl
 
 	@Override
 	public StarWarsCharacter updateStarWarsCharacter(
-			long starWarsCharacterId, String name, String description)
+			long starWarsCharacterId, String name, String picture,
+			String fraction, String description)
 		throws PortalException {
 
 		StarWarsCharacter starWarsCharacter =
@@ -156,6 +157,8 @@ public class StarWarsCharacterLocalServiceImpl
 
 		starWarsCharacter.setModifiedDate(new Date());
 		starWarsCharacter.setName(name);
+		starWarsCharacter.setPicture(picture);
+		starWarsCharacter.setFraction(fraction);
 		starWarsCharacter.setDescription(description);
 
 		starWarsCharacterPersistence.update(starWarsCharacter);
