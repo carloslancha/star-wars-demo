@@ -35,7 +35,7 @@ import org.osgi.service.component.annotations.Component;
 		"com.liferay.portlet.single-page-application=false",
 		"javax.portlet.display-name=Star Wars Demo Portlet",
 		"javax.portlet.init-param.template-path=/",
-		"javax.portlet.init-param.view-template=View",
+		"javax.portlet.init-param.view-template=character_list",
 		"javax.portlet.name=" + StarWarsDemoPortletKeys.STAR_WARS_DEMO,
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=power-user,user"

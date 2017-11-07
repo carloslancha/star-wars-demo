@@ -32,11 +32,12 @@ import org.osgi.service.component.annotations.Component;
 	immediate = true,
 	property = {
 		"javax.portlet.name=" + StarWarsDemoPortletKeys.STAR_WARS_DEMO,
-		"mvc.command.name=/", "mvc.command.name=View"
+		"mvc.command.name=/", "mvc.command.name=character_list"
 	},
 	service = MVCRenderCommand.class
 )
-public class StarWarsDemoViewMVCRenderCommand implements MVCRenderCommand {
+public class StarWarsDemoCharacterListMVCRenderCommand
+	implements MVCRenderCommand {
 
 	@Override
 	public String render(
@@ -49,7 +50,7 @@ public class StarWarsDemoViewMVCRenderCommand implements MVCRenderCommand {
 
 		// Dispatch to the View soy namespace
 
-		return "View";
+		return "CharacterList";
 	}
 
 }
