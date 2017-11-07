@@ -24,6 +24,7 @@ import com.liferay.portal.kernel.portlet.bridges.mvc.MVCRenderCommand;
 import com.liferay.portal.kernel.template.Template;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.WebKeys;
+import com.liferay.star.wars.demo.constants.StarWarsDemoPortletKeys;
 import com.liferay.star.wars.demo.model.StarWarsCharacter;
 import com.liferay.star.wars.demo.service.StarWarsCharacterService;
 
@@ -41,8 +42,8 @@ import org.osgi.service.component.annotations.Reference;
 @Component(
 	immediate = true,
 	property = {
-		"javax.portlet.name=star_wars_demo_portlet", "mvc.command.name=/",
-		"mvc.command.name=View"
+		"javax.portlet.name=" + StarWarsDemoPortletKeys.STAR_WARS_DEMO,
+		"mvc.command.name=/", "mvc.command.name=View"
 	},
 	service = MVCRenderCommand.class
 )
