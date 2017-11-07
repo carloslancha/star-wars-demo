@@ -4,5 +4,9 @@
  * Prints the main view.
  */
 {template .render}
-	<h1>Hello Star Wars Demo</h1>
+	{@param id: string}
+
+	<div id="{$id}">
+		<h1>Hello Star Wars Demo</h1>
+	</div>
 {/template}
