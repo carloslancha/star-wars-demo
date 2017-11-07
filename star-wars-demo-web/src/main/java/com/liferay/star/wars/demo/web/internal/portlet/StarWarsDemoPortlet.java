@@ -15,6 +15,7 @@
 package com.liferay.star.wars.demo.web.internal.portlet;
 
 import com.liferay.portal.portlet.bridge.soy.SoyPortlet;
+import com.liferay.star.wars.demo.constants.StarWarsDemoPortletKeys;
 
 import javax.portlet.Portlet;
 
@@ -43,7 +44,7 @@ import org.osgi.service.component.annotations.Component;
 		"javax.portlet.init-param.copy-request-parameters=true",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.view-template=View",
-		"javax.portlet.name=star_wars_demo_portlet",
+		"javax.portlet.name=" + StarWarsDemoPortletKeys.STAR_WARS_DEMO,
 		"javax.portlet.resource-bundle=content.Language",
 		"javax.portlet.security-role-ref=guest,power-user,user",
 		"javax.portlet.supports.mime-type=text/html"
